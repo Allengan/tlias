@@ -1,0 +1,20 @@
+#数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tilas?useSSL=false
+    username: root
+    password: root
+#mybatis日志配置打印在控制台
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+#自定义信息将阿里云OSS声明
+aliyun:
+  oss:
+    endpoint: https://oss-cn-chengdu.aliyuncs.com
+    accessKeyId: LTAI5tDqWJJocUNJfb7mhz53
+    accessKeySecret: Xtsy6rhd7ff78248hHGtjlp7hP3bwm
+    bucketName: xa-106-web-case

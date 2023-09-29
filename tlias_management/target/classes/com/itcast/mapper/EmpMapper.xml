@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itcast.mapper.EmpMapper">
+    <!--查询总的记录数-->
+<!--    <select id="selectcount" resultType="java.lang.Long">-->
+<!--        select count(*) from tilas.emp-->
+<!--    </select>-->
+    <!--查询每页的员工信息-->
+<!--    <select id="selectList" resultType="com.itcast.pojo.Emp">-->
+<!--        select * from tilas.emp limit #{start},#{pageSize}-->
+<!--    </select>-->
+
+    <!--使用pagehelper分页查询员工信息-->
+    <select id="selectAllEmp" resultType="com.itcast.pojo.Emp">
+        select * from tilas.emp
+    </select>
+    <!--模糊查询-->
+    <select id="fuzzyQuery" resultType="com.itcast.pojo.Emp">
+        select * from tilas.emp
+        <where>
+            <if test="name != null and name != ''">
+               name like concat('%',#{name},'%')
+            </if>
+            <if test="gender != null">
+               and gender = #{gender}
+            </if>
+            <if test="begin != null">
+                and entrydate between begin = #{begin}  and end = #{end}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+    <!--根据id删除员工-->
+    <delete id="deleteEmpById">
+        delete from tilas.emp where id in
+            <foreach collection="ids" item="id" open="(" separator="," close=")" >
+                #{id}
+            </foreach>
+    </delete>
+    <!--添加员工-->
+    <insert id="insertEmp">
+        insert into tilas.emp (username, name, gender, image, job, entrydate, dept_id,create_time,update_time)
+        values (#{emp.username}, #{emp.name}, #{emp.gender},#{emp.image}, #{emp.job}, #{emp.entrydate}, #{emp.deptId},#{emp.createTime},#{emp.updateTime})
+    </insert>
+    <!--根据id查询员工-->
+    <select id="selectEmpById" resultType="com.itcast.pojo.Emp">
+        select * from tilas.emp where id = #{id}
+    </select>
+    <!--修改员工信息-->
+    <update id="updateEmp">
+        update tilas.emp
+        <set>
+            <if test="emp.username != null and emp.username != ''" >
+                ,username =  #{emp.username}
+            </if>
+            <if test="emp.name != null and emp.name != ''" >
+                , name = #{emp.name}
+            </if>
+            <if test="emp.gender!= null">
+                ,gender =  #{emp.gender}
+            </if>
+            <if test="emp.image != null">
+                , image = #{emp.image}
+            </if>
+            <if test="emp.job != null">
+                , job = #{emp.job}
+            </if>
+            <if test="emp.entrydate != null">
+                ,entrydate = #{emp.entrydate}
+            </if>
+            <if test="emp.deptId != null">
+                ,dept_id = #{emp.deptId}
+            </if>
+        </set>
+        where id = #{emp.id}
+    </update>
+    <!--登录用户-->
+    <select id="login" resultType="com.itcast.pojo.Emp">
+        select * from tilas.emp where username = #{emp.username} and password = #{emp.password}
+    </select>
+    <!--根据deptId删除员工-->
+    <delete id="deleteEmpByDeptId">
+        delete from tilas.emp where dept_id = #{deptId}
+    </delete>
+</mapper>

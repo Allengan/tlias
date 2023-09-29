@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itcast.mapper.DeptMapper">
+    <!--查询部门的所有信息（不含分页查询）-->
+    <select id="selectAllDept" resultType="com.itcast.pojo.Dept">
+        select * from tilas.dept
+    </select>
+    <!--根据id删除部门-->
+    <delete id="deleteDeptById">
+        delete from tilas.dept where id = #{id}
+    </delete>
+    <!--添加部门-->
+    <insert id="insertDept">
+        insert into tilas.dept values (null,#{dept.name},#{dept.createTime},#{dept.updateTime})
+    </insert>
+    <!--根据id查询部门-->
+    <select id="selectById" resultType="com.itcast.pojo.Dept">
+        select * from tilas.dept where id = #{id}
+    </select>
+    <!--修改部门-->
+    <update id="updateDept">
+        update tilas.dept
+            <set>
+                <if test="dept.name != null and dept.name != ''">
+                    name = #{dept.name}
+                </if>
+                <if test="dept.createTime != null">
+                    ,create_time = #{dept.createTime}
+                </if>
+                <if test="dept.updateTime != null">
+                    ,update_time = #{dept.updateTime}
+                </if>
+                where id = #{dept.id}
+            </set>
+    </update>
+</mapper>
