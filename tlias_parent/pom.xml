@@ -28,6 +28,9 @@
 		<activation.version>1.1.1</activation.version>
 		<jaxb.runtime.version>2.3.3</jaxb.runtime.version>
 		<jjwt.version>0.9.1</jjwt.version>
+		<spring.boot.starter.aop.version>2.7.16</spring.boot.starter.aop.version>
+		<fastjson.version>1.2.76</fastjson.version>
+		<hutool.all.version>5.8.16</hutool.all.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -101,6 +104,22 @@
 				<groupId>io.jsonwebtoken</groupId>
 				<artifactId>jjwt</artifactId>
 				<version>${jjwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-aop</artifactId>
+				<version>${spring.boot.starter.aop.version}</version>
+			</dependency>
+			<!--Hutool-->
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool.all.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

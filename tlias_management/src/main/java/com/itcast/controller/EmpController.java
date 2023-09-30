@@ -1,5 +1,6 @@
 package com.itcast.controller;
 
+import com.itcast.annotation.Log;
 import com.itcast.pojo.Emp;
 import com.itcast.pojo.PageBean;
 import com.itcast.pojo.Result;
@@ -76,6 +77,7 @@ public class EmpController {
      * @param ids
      * @return data:null
      */
+    @Log
     @DeleteMapping("/emps/{ids}")
     public Result deleteEmpByIds(@PathVariable Integer[] ids){
         log.info("根据id删除员工{}",ids);
@@ -88,6 +90,7 @@ public class EmpController {
      * @param emp
      * @return data:null
      */
+    @Log
     @PostMapping("/emps")
     public Result insertEmp(@RequestBody Emp emp){
         log.info("添加员工 {}" ,emp);
@@ -112,6 +115,7 @@ public class EmpController {
      * @param emp
      * @return data:null
      */
+    @Log
     @PutMapping("/emps")
     public Result updateEmp(@RequestBody Emp emp){
         log.info("修改员工信息{}",emp);

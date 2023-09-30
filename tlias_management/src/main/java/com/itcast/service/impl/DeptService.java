@@ -68,6 +68,7 @@ public class DeptService implements IDeptService {
      * @param id
      * @return
      */
+
     @Override
     public Dept selectById(Integer id) {
         log.info("查询部门id为{}",id);

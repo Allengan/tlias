@@ -18,3 +18,8 @@ aliyun:
     accessKeyId: LTAI5tDqWJJocUNJfb7mhz53
     accessKeySecret: Xtsy6rhd7ff78248hHGtjlp7hP3bwm
     bucketName: xa-106-web-case
+
+#spring事务管理日志
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug

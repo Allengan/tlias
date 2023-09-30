@@ -1,6 +1,7 @@
 package com.itcast.controller;
 
 
+import com.itcast.annotation.Log;
 import com.itcast.pojo.Dept;
 import com.itcast.pojo.Result;
 import com.itcast.service.IDeptService;
@@ -40,6 +41,7 @@ public class DeptController {
      * @param id 部门id
      * @return data ：null
      */
+    @Log
     @DeleteMapping("/depts/{id}")
     public Result deleteDeptById(@PathVariable Integer id){
         log.info("删除部门id为{}", id );
@@ -52,6 +54,7 @@ public class DeptController {
      * @param dept
      * @return data ： null
      */
+    @Log
     @PostMapping("/depts")
     public Result insertDept(@RequestBody Dept dept){
         log.info("添加部门");
@@ -76,6 +79,7 @@ public class DeptController {
      * @param dept
      * @return data ：null
      */
+    @Log
     @PutMapping("/depts")
     public Result updateDept(@RequestBody Dept dept){
         log.info("修改部门");
